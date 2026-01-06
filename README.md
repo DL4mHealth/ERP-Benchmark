@@ -127,6 +127,7 @@ https://drive.google.com/drive/folders/1pVUmPlsQN9j5HD5YJSeiDrBAUAKBCQA5?usp=dri
 ## Requirements  
   
 The recommended requirements are specified as follows:  
+* Python 3.10
 * Jupyter Notebook
 * einops==0.4.0
 * matplotlib==3.7.0
