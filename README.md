@@ -136,7 +136,7 @@ The recommended requirements are specified as follows:
 * reformer-pytorch==1.4.4
 * scikit-learn==1.2.2
 * scipy==1.10.1
-* sympy==1.11.1
+* sympy==1.13.1
 * torch==2.5.1+cu121
 * tqdm==4.64.1
 * natsort~=8.4.0
