@@ -180,6 +180,18 @@ Sample running script:
 python -u run.py --method Medformer --task_name supervised --is_training 1 --root_path ./dataset/200Hz/ --model_id S-PD-SIM --model Medformer --data MultiDatasets --training_datasets PD-SIM --testing_datasets PD-SIM --e_layers 6 --batch_size 128 --n_heads 8 --d_model 128 --d_ff 256 --patch_len_list 25,50,100 --use_subject_vote --swa --des 'Exp' --itr 5 --learning_rate 0.0001 --train_epochs 200 --patience 15
 ```
 
+## Citation
+
+If you find this repo useful, please star our project and cite our paper.
+
+```
+@article{wang2026benchmarking,
+  title={Benchmarking ERP Analysis: Manual Features, Deep Learning, and Foundation Models},
+  author={Wang, Yihe and Kang, Zhiqiao and Chen, Bohan and Zhang, Yu and Zhang, Xiang},
+  journal={arXiv preprint arXiv:2601.00573},
+  year={2026}
+}
+```
 
 ## Acknowledgement
 
