@@ -1,4 +1,4 @@
-# Benchmarking ERP Analysis: Manual Features, Deep Learning, and Foundation Models
+# Benchmarking ERP Analysis: Manual Features, Deep Learning, and Foundation Models (IEEE Transactions on Biomedical Engineering 2026)
 
 #### Authors: 
 #### [Yihe Wang](https://github.com/YiheWang) (ywang145@charlotte.edu), [Zhiqiao Kang*](https://github.com/iHateGetName), [Bohan Chen*](https://github.com/BohanChen520),
@@ -126,8 +126,8 @@ https://drive.google.com/drive/folders/1pVUmPlsQN9j5HD5YJSeiDrBAUAKBCQA5?usp=dri
 
 ## Requirements  
   
-The recommended requirements are specified as follows:  
-* Python 3.10
+The recommended requirements are specified as follows: 
+* Python==3.10
 * Jupyter Notebook
 * einops==0.4.0
 * matplotlib==3.7.0
@@ -137,7 +137,7 @@ The recommended requirements are specified as follows:
 * reformer-pytorch==1.4.4
 * scikit-learn==1.2.2
 * scipy==1.10.1
-* sympy==1.13.1
+* sympy==1.11.1
 * torch==2.5.1+cu121
 * tqdm==4.64.1
 * natsort~=8.4.0

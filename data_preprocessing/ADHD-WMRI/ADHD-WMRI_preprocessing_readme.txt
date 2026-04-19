@@ -50,8 +50,8 @@ Each label row contains:
 
 [stim_type, accuracy, task_id, subject_id, disease_id]
 
-- `stim_type`: placeholder depending on task type (1 for NBackTask and GoNogoTask, 2 for CombinedTask)
+- `stim_type`: placeholder depending on task type (0 for NBackTask, 1 for GoNogoTask, and 2 for CombinedTask)
 - `accuracy`: 1 (correct) for all trials by default
-- `task_id`: 0 = NBackTask, 1 = GoNogoTask, 2 = CombinedTask
+- `task_id`: 1 default
 - `subject_id`: numeric identifier from filename 'SubjectXXX'
 - `disease_id`: 0 = Control, 1 = ADHD

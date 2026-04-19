@@ -5,28 +5,28 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 # Disease Detection
 
 # PD-SIM
-#python -u run.py --method PatchTST \
-#--task_name supervised --is_training 1 --root_path ./dataset/200Hz/ --model_id S-PD-SIM --model PatchTST --data MultiDatasets \
-#--training_datasets PD-SIM \
-#--testing_datasets PD-SIM \
-#--e_layers 6 --batch_size 128 --n_heads 8 --d_model 128 --d_ff 256 --patch_len 100 --use_subject_vote --swa \
-#--des 'Exp' --itr 5 --learning_rate 0.0001 --train_epochs 200 --patience 15
-#
-## PD-ODD
-#python -u run.py --method PatchTST \
-#--task_name supervised --is_training 1 --root_path ./dataset/200Hz/ --model_id S-PD-ODD --model PatchTST --data MultiDatasets \
-#--training_datasets PD-ODD \
-#--testing_datasets PD-ODD \
-#--e_layers 6 --batch_size 128 --n_heads 8 --d_model 128 --d_ff 256 --patch_len 100 --use_subject_vote --swa \
-#--des 'Exp' --itr 5 --learning_rate 0.0001 --train_epochs 200 --patience 15
-#
-## SCPD
-#python -u run.py --method PatchTST \
-#--task_name supervised --is_training 1 --root_path ./dataset/200Hz/ --model_id S-SCPD --model PatchTST --data MultiDatasets \
-#--training_datasets SCPD \
-#--testing_datasets SCPD \
-#--e_layers 6 --batch_size 128 --n_heads 8 --d_model 128 --d_ff 256 --patch_len 100 --use_subject_vote --swa \
-#--des 'Exp' --itr 5 --learning_rate 0.0001 --train_epochs 200 --patience 15
+python -u run.py --method PatchTST \
+--task_name supervised --is_training 1 --root_path ./dataset/200Hz/ --model_id S-PD-SIM --model PatchTST --data MultiDatasets \
+--training_datasets PD-SIM \
+--testing_datasets PD-SIM \
+--e_layers 6 --batch_size 128 --n_heads 8 --d_model 128 --d_ff 256 --patch_len 100 --use_subject_vote --swa \
+--des 'Exp' --itr 5 --learning_rate 0.0001 --train_epochs 200 --patience 15
+
+# PD-ODD
+python -u run.py --method PatchTST \
+--task_name supervised --is_training 1 --root_path ./dataset/200Hz/ --model_id S-PD-ODD --model PatchTST --data MultiDatasets \
+--training_datasets PD-ODD \
+--testing_datasets PD-ODD \
+--e_layers 6 --batch_size 128 --n_heads 8 --d_model 128 --d_ff 256 --patch_len 100 --use_subject_vote --swa \
+--des 'Exp' --itr 5 --learning_rate 0.0001 --train_epochs 200 --patience 15
+
+# SCPD
+python -u run.py --method PatchTST \
+--task_name supervised --is_training 1 --root_path ./dataset/200Hz/ --model_id S-SCPD --model PatchTST --data MultiDatasets \
+--training_datasets SCPD \
+--testing_datasets SCPD \
+--e_layers 6 --batch_size 128 --n_heads 8 --d_model 128 --d_ff 256 --patch_len 100 --use_subject_vote --swa \
+--des 'Exp' --itr 5 --learning_rate 0.0001 --train_epochs 200 --patience 15
 
 # RLPD
 python -u run.py --method PatchTST \

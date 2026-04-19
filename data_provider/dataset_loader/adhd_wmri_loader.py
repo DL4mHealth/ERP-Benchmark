@@ -35,7 +35,7 @@ def get_id_list_adhd_wmri(args, label_path, a=0.6, b=0.8):
     for filename in os.listdir(label_path):
         sub_label_path = os.path.join(label_path, filename)
         subject_label = np.load(sub_label_path)
-        # [task_id, stimulus_type, subject_id, session_id?, disease_id]
+        # [sub_task_id, stimulus_type, task_id, subject_id, disease_id]
         # [subject_id, disease_id] For SCPD, subject ID and disease ID should be the same for all samples a subject
         subject_id_disease_id = subject_label[0, 3:5]
         data_list.append(subject_id_disease_id.reshape(1, -1))
@@ -103,6 +103,7 @@ class ADHDWMRILoader(Dataset):
         self.X = normalize_batch_ts(self.X)
 
         self.y = self.y[:, [4, 3]]  # only keep [disease_id, subject_id] for ADHD-WMRI
+        # self.y = self.y[:, [0, 3]]  # only keep [task_id, subject_id] for ADHD-WMRI
 
         self.max_seq_len = self.X.shape[1]
 
