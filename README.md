@@ -4,7 +4,7 @@
 #### [Yihe Wang](https://github.com/YiheWang) (ywang145@charlotte.edu), [Zhiqiao Kang*](https://github.com/iHateGetName), [Bohan Chen*](https://github.com/BohanChen520),
 ####  [Yu Zhang](https://profiles.stanford.edu/176276), [Xiang Zhang](http://xiangzhang.info/) (xiang.zhang@charlotte.edu)
 
-#### Paper Link: [Preprint](http://arxiv.org/abs/2601.00573)
+#### Paper Link: [Preprint](http://arxiv.org/abs/2601.00573), [Official](https://doi.org/10.1109/TBME.2026.3686229)
 
 
 ## Overview of the Repository
@@ -188,7 +188,7 @@ If you find this repo useful, please star our project and cite our paper.
 @article{wang2026benchmarking,
   title={Benchmarking ERP Analysis: Manual Features, Deep Learning, and Foundation Models},
   author={Wang, Yihe and Kang, Zhiqiao and Chen, Bohan and Zhang, Yu and Zhang, Xiang},
-  journal={arXiv preprint arXiv:2601.00573},
+  journal={IEEE Transactions on Biomedical Engineering},
   year={2026}
 }
 ```
