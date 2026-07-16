@@ -2,6 +2,7 @@ import os
 import numpy as np
 import pandas as pd
 import torch
+import re
 from itertools import repeat
 from scipy.signal import butter, lfilter, filtfilt
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
@@ -190,40 +191,83 @@ def split_eeg_segments(data, segment_length=128, overlapping=0.5):
     return segments
 
 
+def extract_id_from_feature(filename):
+    match = re.match(r"^feature_(\d+)\.npy$", filename)
+    if match is None:
+        return None
+    return int(match.group(1)), match.group(1)
+
+
 def load_data_by_ids(data_path, label_path, ids, args):
-    '''
-    Loads subjects with IDs in the ids list
+    """
+    Loads subjects with IDs in the ids list.
+
     Args:
-        data_path: directory of data files
-        label_path: directory of label files
+        data_path: directory of feature files, e.g., feature_001.npy
+        label_path: directory of label files, e.g., label_001.npy
         ids: list of subject IDs to load
         args: arguments
+
     Returns:
         X: (N, T, C)
         y: (N, xxx)
-    '''
+    """
     feature_list = []
     label_list = []
 
-    # load data by subject ids
-    for feature_filename, label_filename in zip(os.listdir(data_path), os.listdir(label_path)):
-        # get subject ID from filename, e.g., 'AD_1.npy'
-        sub_id = int(feature_filename.split('_')[-1].split('.')[0])
-        # only load subject with ID in the ids list
-        if sub_id in ids:
-            sub_feature_path = os.path.join(data_path, feature_filename)
-            sub_label_path = os.path.join(label_path, label_filename)
-            subject_feature = np.load(sub_feature_path)  # (N, T, C)
-            subject_label = np.load(sub_label_path)   # (N, xxx), column number depends on dataset
-            if subject_feature.shape[0] != subject_label.shape[0]:
-                print(f"Subject {sub_id} data and label length mismatch: " 
-                      f"{subject_feature.shape[0]} vs {subject_label.shape[0]}, skipped")
-                continue
-            feature_list.append(subject_feature)
-            label_list.append(subject_label)
-    # concat and shuffle
+    ids = set(int(i) for i in ids)
+
+    feature_files = {}
+    for filename in os.listdir(data_path):
+        parsed = extract_id_from_feature(filename)
+        if parsed is None:
+            continue
+
+        sub_id, sub_key = parsed
+
+        if sub_id in feature_files:
+            raise ValueError(f"Duplicate feature file for subject {sub_id}")
+
+        feature_files[sub_id] = {
+            "key": sub_key,
+            "filename": filename,
+        }
+
+    for sub_id in sorted(ids):
+        if sub_id not in feature_files:
+            raise FileNotFoundError(f"Missing feature file for subject {sub_id}")
+
+        sub_key = feature_files[sub_id]["key"]
+
+        feature_filename = feature_files[sub_id]["filename"]
+        label_filename = f"label_{sub_key}.npy"
+
+        sub_feature_path = os.path.join(data_path, feature_filename)
+        sub_label_path = os.path.join(label_path, label_filename)
+
+        if not os.path.exists(sub_label_path):
+            raise FileNotFoundError(
+                f"Missing label file for subject {sub_id}: expected {label_filename}"
+            )
+
+        subject_feature = np.load(sub_feature_path)  # (N, T, C)
+        subject_label = np.load(sub_label_path)      # (N, xxx)
+
+        if subject_feature.shape[0] != subject_label.shape[0]:
+            raise ValueError(
+                f"Subject {sub_id} data and label length mismatch: "
+                f"{subject_feature.shape[0]} vs {subject_label.shape[0]}"
+            )
+
+        feature_list.append(subject_feature)
+        label_list.append(subject_label)
+
+    if len(feature_list) == 0:
+        raise ValueError("No valid subjects were loaded. Please check ids and file names.")
+
     X = np.concatenate(feature_list, axis=0)
     y = np.concatenate(label_list, axis=0)
+
     X, y = shuffle(X, y, random_state=42)
 
     return X, y
