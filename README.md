@@ -7,7 +7,7 @@
 #### Paper Link: [Preprint](http://arxiv.org/abs/2601.00573), [Official](https://doi.org/10.1109/TBME.2026.3686229)
 
 
-## 💥💥Update: Check our following work [ERP-FM](https://arxiv.org/abs/2609.32796) based on this research.💥💥
+## 💥Update: Check our following work [ERP-FM](https://arxiv.org/abs/2609.32796) based on this research.💥
 
 ## Overview of the Repository
 
